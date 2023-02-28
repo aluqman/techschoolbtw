@@ -24,3 +24,6 @@ techschoolbtw-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Secrets file, for your secrets.
+/config/secrets.exs
