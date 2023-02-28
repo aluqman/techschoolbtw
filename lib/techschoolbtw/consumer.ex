@@ -19,8 +19,8 @@ defmodule Techschoolbtw.Consumer do
   Ships events off to be handled by a separate handler
   function depending on the event.
   """
-  def handle_event({intent, msg, _ws_state}) do
-    case intent do
+  def handle_event({event, msg, _ws_state}) do
+    case event do
       :MESSAGE_CREATE -> MessageCreate.handle_event(msg)
       _ -> :noop
     end
