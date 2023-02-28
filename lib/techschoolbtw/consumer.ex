@@ -1,17 +1,28 @@
 defmodule Techschoolbtw.Consumer do
+  @moduledoc """
+  Over-arching consumer for events from the Discord API.
+  Utilizes Nostrum.Consumer to consume events.
+  """
   use Nostrum.Consumer
 
   alias Techschoolbtw.Consumer.MessageCreate
 
+  @doc """
+  Starts the consumer.
+  """
   def start_link do
     Consumer.start_link(__MODULE__)
   end
 
-  def handle_event({:MESSAGE_CREATE, msg, _ws_state}) do
-    MessageCreate.handle_event(msg)
-  end
-
-  def handle_event(_event) do
-    :noop
+  @doc """
+  Handles events as published by the Discord API to the Nostrum Consumer.
+  Ships events off to be handled by a separate handler
+  function depending on the event.
+  """
+  def handle_event({intent, msg, _ws_state}) do
+    case intent do
+      :MESSAGE_CREATE -> MessageCreate.handle_event(msg)
+      _ -> :noop
+    end
   end
 end
