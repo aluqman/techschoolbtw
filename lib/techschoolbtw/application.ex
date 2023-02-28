@@ -9,7 +9,7 @@ defmodule Techschoolbtw.Application do
   def start(_type, _args) do
     children = [
       # Starts a worker by calling: Techschoolbtw.Worker.start_link(arg)
-      # {Techschoolbtw.Worker, arg}
+      Techschoolbtw.Consumer
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
