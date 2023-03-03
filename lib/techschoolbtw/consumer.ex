@@ -8,7 +8,7 @@ defmodule Techschoolbtw.Consumer do
   use Nostrum.Consumer
 
   alias Techschoolbtw.Consumer.MessageCreate
-  alias Techschoolbtw.Ready
+  alias Techschoolbtw.Consumer.Ready
 
   @doc """
   Starts the consumer.
