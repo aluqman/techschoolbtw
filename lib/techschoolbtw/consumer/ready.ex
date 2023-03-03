@@ -4,7 +4,7 @@ defmodule Techschoolbtw.Consumer.Ready do
   This includes setting the bot's status, as well as what it's doing
   i.e. streaming, watching, playing, etc.
   """
-  alias Nostrum.Api
+  alias Techschoolbtw.API
 
   @status :online
   @playing_text "the slow, bitter end of the world."
@@ -15,7 +15,7 @@ defmodule Techschoolbtw.Consumer.Ready do
   """
   @spec handle_ready :: :ok
   def handle_ready do
-    Api.update_status(
+    API.update_status(
       @status,
       @playing_text,
       @watching_type

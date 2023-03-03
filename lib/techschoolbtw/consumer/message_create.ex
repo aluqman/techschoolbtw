@@ -3,7 +3,7 @@ defmodule Techschoolbtw.Consumer.MessageCreate do
   Handler module for :MESSAGE_CREATE events recieved by the consumer.
   """
   require Logger
-  alias Nostrum.Api
+  alias Techschoolbtw.API
   alias Techschoolbtw.Constants
 
   @doc """
@@ -20,13 +20,13 @@ defmodule Techschoolbtw.Consumer.MessageCreate do
 
       cond do
         content =~ "tech school btw" ->
-          Api.create_message(
+          API.create_message(
             msg.channel_id,
             content: Constants.tech_school_btw_link()
           )
 
         content =~ "tech yeah" ->
-          Api.create_reaction(
+          API.create_reaction(
             msg.channel_id,
             msg.id,
             Constants.tech_yeah_emoji()
