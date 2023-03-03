@@ -23,7 +23,8 @@ defmodule Techschoolbtw.MixProject do
   defp deps do
     [
       {:nostrum, "~> 0.6"},
-      {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:mox, "~> 1.0", only: :test}
     ]
   end
 end
