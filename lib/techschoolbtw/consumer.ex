@@ -34,6 +34,7 @@ defmodule Techschoolbtw.Consumer do
       end
 
     case response do
+      ok when ok in [:ok, {:ok}] -> :ok
       {:ok, _} -> :ok
       {:error, e} -> Logger.error(e)
       _ -> :noop

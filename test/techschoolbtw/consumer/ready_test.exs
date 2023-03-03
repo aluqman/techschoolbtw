@@ -2,8 +2,7 @@ defmodule TechschoolbtwTest.Consumer.Ready do
   use ExUnit.Case, async: true
 
   import Mox
-
-  alias Techschoolbtw.Consumer.Ready
+  import Techschoolbtw.Consumer.Ready
 
   doctest Techschoolbtw.Consumer.Ready
 
@@ -14,7 +13,7 @@ defmodule TechschoolbtwTest.Consumer.Ready do
       DiscordAPIMock
       |> expect(:update_status, fn _status, _text, _type -> :ok end)
 
-      assert Ready.handle_ready() == :ok
+      assert handle_ready() == :ok
     end
 
     test "ready returns error if API is unavailable" do
@@ -23,7 +22,7 @@ defmodule TechschoolbtwTest.Consumer.Ready do
       DiscordAPIMock
       |> expect(:update_status, fn _status, _text, _type -> error end)
 
-      assert Ready.handle_ready() == error
+      assert handle_ready() == error
     end
   end
 end

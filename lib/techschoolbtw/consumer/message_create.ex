@@ -15,26 +15,27 @@ defmodule Techschoolbtw.Consumer.MessageCreate do
   @spec handle_event(Nostrum.Struct.Message.t()) ::
           {:ok, Nostrum.Struct.Message.t()} | {:error, any()} | :ignore
   def handle_event(msg) do
-    unless msg.author.bot do
-      content = String.downcase(msg.content)
+    content = msg.content
 
-      cond do
-        content =~ "tech school btw" ->
-          API.create_message(
-            msg.channel_id,
-            content: Constants.tech_school_btw_link()
-          )
+    cond do
+      msg.author.bot ->
+        :noop
 
-        content =~ "tech yeah" ->
-          API.create_reaction(
-            msg.channel_id,
-            msg.id,
-            Constants.tech_yeah_emoji()
-          )
+      content =~ "tech school btw" ->
+        API.create_message(
+          msg.channel_id,
+          content: Constants.tech_school_btw_link()
+        )
 
-        true ->
-          :noop
-      end
+      content =~ "tech yeah" ->
+        API.create_reaction(
+          msg.channel_id,
+          msg.id,
+          Constants.tech_yeah_emoji()
+        )
+
+      true ->
+        :noop
     end
   end
 end
