@@ -10,6 +10,7 @@ defmodule Techschoolbtw.Consumer do
   @doc """
   Starts the consumer.
   """
+  @spec start_link :: {:error, String.t()} | {:ok, pid()}
   def start_link do
     Consumer.start_link(__MODULE__)
   end
@@ -19,6 +20,8 @@ defmodule Techschoolbtw.Consumer do
   Ships events off to be handled by a separate handler
   function depending on the event.
   """
+  @impl Nostrum.Consumer
+  @spec handle_event(Nostrum.Consumer.event()) :: :noop | {:ok, struct()} | {:error, struct()}
   def handle_event({event, msg, _ws_state}) do
     case event do
       :MESSAGE_CREATE -> MessageCreate.handle_event(msg)

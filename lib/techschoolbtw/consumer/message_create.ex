@@ -11,6 +11,7 @@ defmodule Techschoolbtw.Consumer.MessageCreate do
   This can be extended to harass a specific discord user by responding against
   a specific author id, if one chooses
   """
+  @spec handle_event(Nostrum.Struct.Message.t()) :: {:ok, Nostrum.Struct.Message.t()} | {:error, struct()} 
   def handle_event(msg) do
     unless msg.author.bot do
       content = String.downcase(msg.content)
