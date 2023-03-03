@@ -13,7 +13,7 @@ defmodule Techschoolbtw.Consumer.Ready do
   @doc """
   Handles the event for :READY.
   """
-  @spec handle_ready :: :ok
+  @spec handle_ready :: :ok | {:error, struct()}
   def handle_ready do
     API.update_status(
       @status,
