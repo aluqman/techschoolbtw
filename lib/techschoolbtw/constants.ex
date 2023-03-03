@@ -10,4 +10,7 @@ defmodule Techschoolbtw.Constants do
   """
   @spec tech_school_btw_link :: String.t()
   def tech_school_btw_link, do: "https://youtu.be/NCnY4fnD5hE"
+
+  @spec tech_yeah_emoji :: String.t()
+  def tech_yeah_emoji, do: "techyeah:983480064958165022"
 end

@@ -18,7 +18,17 @@ defmodule Techschoolbtw.Consumer.MessageCreate do
       content = String.downcase(msg.content)
       cond do
         content =~ "tech school btw" ->
-          Api.create_message(msg.channel_id, content: Constants.tech_school_btw_link())
+          Api.create_message(
+            msg.channel_id, 
+            content: Constants.tech_school_btw_link()
+          )
+
+        content =~ "tech yeah" -> 
+          Api.create_reaction(
+            msg.channel_id, 
+            msg.id, 
+            Constants.tech_yeah_emoji
+          )
 
         true ->
          :noop
