@@ -35,7 +35,7 @@ defmodule Techschoolbtw.Consumer do
     case response do 
       {:ok, _} -> :ok
       {:error, e} -> Logger.error(e)
-      :noop -> :noop
+      _ -> :noop
     end
   end
 end
