@@ -62,4 +62,6 @@ jobs:
       run: mix deps.get
 
     - name: Run tests
-      run: mix test --no-start # We don't want the bot to try and start without a token, now do we?
+      env:
+        TEST_BOT_TOKEN: ${{ secrets.TEST_BOT_TOKEN }}
+      run: MIX_ENV=test mix test
