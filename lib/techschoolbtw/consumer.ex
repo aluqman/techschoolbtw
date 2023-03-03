@@ -24,15 +24,16 @@ defmodule Techschoolbtw.Consumer do
   function depending on the event.
   """
   @impl Nostrum.Consumer
-  @spec handle_event(Nostrum.Consumer.event()) :: :noop | :ok 
+  @spec handle_event(Nostrum.Consumer.event()) :: :noop | :ok
   def handle_event({event, msg, _ws_state}) do
-    response = case event do
-      :MESSAGE_CREATE -> MessageCreate.handle_event(msg)
-      :READY -> Ready.handle_ready()
-      _ -> :noop
-    end
+    response =
+      case event do
+        :MESSAGE_CREATE -> MessageCreate.handle_event(msg)
+        :READY -> Ready.handle_ready()
+        _ -> :noop
+      end
 
-    case response do 
+    case response do
       {:ok, _} -> :ok
       {:error, e} -> Logger.error(e)
       _ -> :noop
