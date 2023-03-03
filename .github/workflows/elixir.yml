@@ -68,6 +68,9 @@ jobs:
       run: |
         mix test --cover --export-coverage default
         mix test.coverage
-      with: 
-        name: coverage-report
+
+    - name: Archive code coverage results
+      uses: actions/upload-artifact@v3
+      with:
+        name: coverge-report
         path: cover/
