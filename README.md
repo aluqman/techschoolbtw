@@ -1,21 +1,17 @@
-# Techschoolbtw
+# TechSchoolBtw Bot
 
-**TODO: Add description**
+A bot built to ~harass my friends~ make super-ordinary and normal jokes in our Discord chat.
+
+Really, this is more of an excuse for me to mess around with Elixir in a capacity that doesn't involve
+Phoenix, and the whole "friends" thing is an excuse. Don't tell them, though!
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `techschoolbtw` to your list of dependencies in `mix.exs`:
+Don't.
 
-```elixir
-def deps do
-  [
-    {:techschoolbtw, "~> 0.1.0"}
-  ]
-end
-```
+Really, don't.
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/techschoolbtw](https://hexdocs.pm/techschoolbtw).
+If you'd really like to, for whatever reason, give me a few days to set up the GitHub Action to 
+release a version of this every time I tag it as a Docker container. That's a bridge to burn 
+at a later date.
 
