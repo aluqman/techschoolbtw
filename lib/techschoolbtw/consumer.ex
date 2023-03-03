@@ -3,9 +3,12 @@ defmodule Techschoolbtw.Consumer do
   Over-arching consumer for events from the Discord API.
   Utilizes Nostrum.Consumer to consume events.
   """
+  require Logger
+
   use Nostrum.Consumer
 
   alias Techschoolbtw.Consumer.MessageCreate
+  alias Techschoolbtw.Ready
 
   @doc """
   Starts the consumer.
@@ -21,11 +24,18 @@ defmodule Techschoolbtw.Consumer do
   function depending on the event.
   """
   @impl Nostrum.Consumer
-  @spec handle_event(Nostrum.Consumer.event()) :: :noop | {:ok, struct()} | {:error, struct()}
+  @spec handle_event(Nostrum.Consumer.event()) :: :noop | :ok 
   def handle_event({event, msg, _ws_state}) do
-    case event do
+    response = case event do
       :MESSAGE_CREATE -> MessageCreate.handle_event(msg)
+      :READY -> Ready.handle_ready()
       _ -> :noop
+    end
+
+    case response do 
+      {:ok, _} -> :ok
+      {:error, e} -> Logger.error(e)
+      :noop -> :noop
     end
   end
 end

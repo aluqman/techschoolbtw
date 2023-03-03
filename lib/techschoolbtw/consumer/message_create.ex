@@ -2,6 +2,7 @@ defmodule Techschoolbtw.Consumer.MessageCreate do
   @moduledoc """
   Handler module for :MESSAGE_CREATE events recieved by the consumer.
   """
+  require Logger
   alias Nostrum.Api
   alias Techschoolbtw.Constants
 
@@ -11,16 +12,16 @@ defmodule Techschoolbtw.Consumer.MessageCreate do
   This can be extended to harass a specific discord user by responding against
   a specific author id, if one chooses
   """
-  @spec handle_event(Nostrum.Struct.Message.t()) :: {:ok, Nostrum.Struct.Message.t()} | {:error, struct()} 
+  @spec handle_event(Nostrum.Struct.Message.t()) :: {:ok, Nostrum.Struct.Message.t()} | {:error, any()} | :ignore
   def handle_event(msg) do
     unless msg.author.bot do
       content = String.downcase(msg.content)
       cond do
         content =~ "tech school btw" ->
-          Api.create_message(msg.channel_id, Constants.tech_school_btw_link)
+          Api.create_message(msg.channel_id, content: Constants.tech_school_btw_link())
 
         true ->
-          :ignore
+         :noop
       end
     end
   end
