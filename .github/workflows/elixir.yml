@@ -65,4 +65,9 @@ jobs:
       env:
         TEST_BOT_TOKEN: ${{ secrets.TEST_BOT_TOKEN }}
         MIX_ENV: test
-      run: mix test
+      run: |
+        mix test --cover --export-coverage default
+        mix test.coverage
+      with: 
+        name: coverage-report
+        path: cover/
