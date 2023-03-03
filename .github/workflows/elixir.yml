@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   lint: 
-    name: Lint 
+    name: Lint
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v3
@@ -39,7 +39,7 @@ jobs:
         run: mix format --check-formatted
 
   build:
-    name: Run tests
+    name: Test
     runs-on: ubuntu-latest
 
     steps:
