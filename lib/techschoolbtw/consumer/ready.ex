@@ -1,4 +1,4 @@
-defmodule Techschoolbtw.Ready do 
+defmodule Techschoolbtw.Consumer.Ready do 
   @moduledoc """
   Holds the responsibilities of reacting to the :READY gateway event.
   This includes setting the bot's status, as well as what it's doing
