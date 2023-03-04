@@ -1,5 +1,5 @@
 defmodule TechschoolbtwTest.Constants do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   alias Techschoolbtw.Constants
 
   doctest Techschoolbtw.Constants
