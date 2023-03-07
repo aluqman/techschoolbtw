@@ -65,6 +65,7 @@ jobs:
     - name: Run tests
       env:
         TEST_BOT_TOKEN: ${{ secrets.TEST_BOT_TOKEN }}
+        OWNER_ID: ${{ secrets.OWNER_ID }}
         MIX_ENV: test
       run: |
         mix test --cover --export-coverage default
