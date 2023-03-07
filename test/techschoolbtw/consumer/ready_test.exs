@@ -9,14 +9,15 @@ defmodule TechschoolbtwTest.Consumer.Ready do
   setup :verify_on_exit!
 
   describe "handle_ready/0" do
-    test "ready sets status when API is connected" do
+    test "handles READY events when API is connected" do
       DiscordAPIMock
       |> expect(:update_status, fn _status, _text, _type -> :ok end)
+      |> expect(:create_global_application_command, fn _command -> :ok end)
 
       assert handle_ready() == :ok
     end
 
-    test "ready returns error if API is unavailable" do
+    test "returns error if API is unavailable" do
       error = {:error, %{error: "some error"}}
 
       DiscordAPIMock

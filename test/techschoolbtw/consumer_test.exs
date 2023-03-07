@@ -25,6 +25,7 @@ defmodule TechschoolbtwTest.Consumer do
     test "properly hands off :READY" do
       DiscordAPIMock
       |> expect(:update_status, fn _status, _text, _type -> :ok end)
+      |> expect(:create_global_application_command, fn _command -> :ok end)
 
       assert handle_event({:READY, %{}, %{}}) == :ok
     end

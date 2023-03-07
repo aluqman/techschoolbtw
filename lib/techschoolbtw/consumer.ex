@@ -7,6 +7,7 @@ defmodule Techschoolbtw.Consumer do
 
   use Nostrum.Consumer
 
+  alias Techschoolbtw.Consumer.InteractionCreate
   alias Techschoolbtw.Consumer.MessageCreate
   alias Techschoolbtw.Consumer.Ready
 
@@ -30,6 +31,7 @@ defmodule Techschoolbtw.Consumer do
       case event do
         :MESSAGE_CREATE -> MessageCreate.handle_event(msg)
         :READY -> Ready.handle_ready()
+        :INTERACTION_CREATE -> InteractionCreate.handle_event(msg)
         _ -> :noop
       end
 
