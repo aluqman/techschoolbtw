@@ -25,9 +25,28 @@ defmodule TechschoolbtwTest.Consumer do
     test "properly hands off :READY" do
       DiscordAPIMock
       |> expect(:update_status, fn _status, _text, _type -> :ok end)
-      |> expect(:create_global_application_command, fn _command -> :ok end)
+      |> expect(:bulk_overwrite_global_application_commands, fn _command -> :ok end)
 
       assert handle_event({:READY, %{}, %{}}) == :ok
+    end
+
+    test "properly hands off :INTERACTION_CREATE" do
+      interaction = %{
+        channel_id: 1,
+        user: %{id: 0},
+        data: %{
+          options: [
+            %{value: "Test message"}
+          ]
+        }
+      }
+
+      DiscordAPIMock
+      |> expect(:create_interaction_response, fn _interaction, _message -> {:ok, %{}} end)
+      |> expect(:create_message, 0, fn _channel_id, _message -> {:ok, %{}} end)
+
+      assert handle_event({:INTERACTION_CREATE, interaction, %{}}) == :ok
+
     end
 
     test "logs error when one occurs" do

@@ -23,7 +23,7 @@ defmodule Techschoolbtw.Consumer.Ready do
              @watching_type
            ),
          {:ok, _} <-
-           API.create_global_application_command(Botsay.command()) do
+           API.bulk_overwrite_global_application_commands([Botsay.command()]) do
       :ok
     end
   end

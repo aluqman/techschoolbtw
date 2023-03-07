@@ -12,7 +12,7 @@ defmodule TechschoolbtwTest.Consumer.Ready do
     test "handles READY events when API is connected" do
       DiscordAPIMock
       |> expect(:update_status, fn _status, _text, _type -> :ok end)
-      |> expect(:create_global_application_command, fn _command -> :ok end)
+      |> expect(:bulk_overwrite_global_application_commands, fn _command -> :ok end)
 
       assert handle_ready() == :ok
     end

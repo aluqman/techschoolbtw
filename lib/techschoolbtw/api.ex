@@ -8,14 +8,7 @@ defmodule Techschoolbtw.API do
 
   For all documentation, see https://kraigie.github.io/nostrum/Nostrum.Api.html
   """
-
-  @callback create_global_application_command(Nostrum.Struct.ApplicationCommand.t()) ::
-              {:ok, struct()} | {:error, struct()}
-
-  @callback create_guild_application_command(
-              integer(),
-              Nostrum.Struct.ApplicationCommand.t()
-            ) :: {:ok, struct()} | {:error, struct()}
+  @callback bulk_overwrite_global_application_commands(list(struct())) :: {:ok, list(struct())} | {:error, struct()}
 
   @callback create_interaction_response(integer(), struct()) ::
               {:ok, struct()} | {:error, struct()}
@@ -29,13 +22,8 @@ defmodule Techschoolbtw.API do
   @callback update_status(atom(), String.t(), integer()) :: :ok
 
   @doc false
-  def create_global_application_command(command) do
-    impl().create_global_application_command(command)
-  end
-
-  @doc false
-  def create_guild_application_command(guild_id, command) do
-    impl().create_guild_application_command(guild_id, command)
+  def bulk_overwrite_global_application_commands(command_list) do
+    impl().bulk_overwrite_global_application_commands(command_list)
   end
 
   @doc false
