@@ -46,7 +46,6 @@ defmodule TechschoolbtwTest.Consumer do
       |> expect(:create_message, 0, fn _channel_id, _message -> {:ok, %{}} end)
 
       assert handle_event({:INTERACTION_CREATE, interaction, %{}}) == :ok
-
     end
 
     test "logs error when one occurs" do

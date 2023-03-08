@@ -8,7 +8,8 @@ defmodule Techschoolbtw.API do
 
   For all documentation, see https://kraigie.github.io/nostrum/Nostrum.Api.html
   """
-  @callback bulk_overwrite_global_application_commands(list(struct())) :: {:ok, list(struct())} | {:error, struct()}
+  @callback bulk_overwrite_global_application_commands(list(struct())) ::
+              {:ok, list(struct())} | {:error, struct()}
 
   @callback create_interaction_response(integer(), struct()) ::
               {:ok, struct()} | {:error, struct()}
