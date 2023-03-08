@@ -28,6 +28,7 @@ defmodule Techschoolbtw.Consumer.InteractionCreate do
       flags: 1 <<< 6
     }
   }
+
   @doc """
   Handler for handling interaction event creation from the API.
   """
